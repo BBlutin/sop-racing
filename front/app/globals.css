@@ -1,0 +1,33 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    @apply m-0 text-base antialiased font-normal bg-gray-50 text-slate-500;
+  }
+}
+
+@layer components {
+  .activeLink {
+    @apply flex items-center px-4 py-3 mx-4 my-0 text-sm font-medium transition-colors bg-white rounded-lg shadow-md whitespace-nowrap text-slate-700;
+  }
+  .baseLink {
+    @apply flex items-center px-4 py-3 mx-4 my-0 text-sm font-medium transition-colors rounded-lg whitespace-nowrap text-slate-500;
+  }
+  .activeTitle {
+    @apply flex items-center justify-center w-10 h-10 p-2 mr-2 text-center bg-white bg-center rounded-lg shadow-sm stroke-0 bg-gradient-to-tl from-purple-700 to-pink-500;
+  }
+  .baseTitle {
+    @apply flex items-center justify-center w-10 h-10 p-2 mr-2 text-center bg-white bg-center rounded-lg shadow-md stroke-0;
+  }
+  .activeIcon {
+    @apply w-8 h-8 fill-white;
+  }
+  .baseIcon {
+    @apply w-8 h-8 fill-gray-600;
+  }
+  .componentCard {
+    @apply relative p-8 bg-white shadow-xl w-60 h-60 rounded-xl;
+  }
+}
