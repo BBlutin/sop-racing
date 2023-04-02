@@ -6,7 +6,7 @@ import Loading from "./Loading";
 import CarComponent from "./CarComponent";
 import CarStatistic from "./CarStatistic";
 
-const CarResume = ({ data }: any) => {
+const CarResume = ({ car, inventory }: any) => {
   const [loading, setLoading] = useState(true);
   const [stats, setStats] = useState<Stats>({
     power: 0,
@@ -31,9 +31,8 @@ const CarResume = ({ data }: any) => {
       weight: number = 0,
       wear: number = 0,
       energy: number = 0;
-    for (let index = 0; index < data.items.length; index++) {
-      let current = data.items[index].item;
-      console.log(current);
+    for (let index = 0; index < car.items.length; index++) {
+      let current = car.items[index].item;
       if (current.type === "Wheels") {
         setWheel(current);
       } else if (current.type === "Bodywork") {
@@ -46,7 +45,6 @@ const CarResume = ({ data }: any) => {
         setSpoiler(current);
       }
       current.statistiques.forEach((element: Stat) => {
-        console.log(element.type, element.value);
         if (element.type === "Power") {
           power += element.value;
         } else if (element.type === "Acceleration") {
@@ -66,7 +64,8 @@ const CarResume = ({ data }: any) => {
     }
     setStats({ power, acceleration, grip, handling, weight, wear, energy });
     setLoading(false);
-  }, [data]);
+    console.log(inventory);
+  }, [car]);
 
   return (
     <div className="flex flex-col">
@@ -99,11 +98,11 @@ const CarResume = ({ data }: any) => {
         </div>
       ) : (
         <div className="grid grid-cols-3 gap-7">
-          <CarComponent component={body!} />
-          <CarComponent component={engine!} />
-          <CarComponent component={spoiler!} />
-          <CarComponent component={brakes!} />
-          <CarComponent component={wheel!} />
+          <CarComponent component={body!} inventory={inventory} />
+          <CarComponent component={engine!} inventory={inventory} />
+          <CarComponent component={spoiler!} inventory={inventory} />
+          <CarComponent component={brakes!} inventory={inventory} />
+          <CarComponent component={wheel!} inventory={inventory} />
         </div>
       )}
     </div>

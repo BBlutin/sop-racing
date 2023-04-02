@@ -4,8 +4,13 @@ type Component = {
   image: string;
   rarity: string;
   sellingPrice: number;
-  statistiques: [];
+  statistiques: Stat[];
   type: string;
+};
+
+type Item = {
+  isEquipped: boolean;
+  item: Component;
 };
 
 type Stats = {

@@ -1,6 +1,4 @@
 const CarStatistic = ({ stats }: { stats: Stats }) => {
-  console.log(stats);
-
   return (
     <div className="grid grid-cols-2">
       <div className="flex flex-col mt-8 mr-8 space-y-3">
