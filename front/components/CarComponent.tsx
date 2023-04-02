@@ -101,10 +101,17 @@ const CarComponent = ({
             height={512}
             alt="Composant"
           />
-          <div className="absolute flex top-2 right-3">
-            <button className="p-2 mr-2 bg-purple-100 rounded-xl">
+          <div className="absolute flex items-center justify-between top-2 left-3 right-3">
+            {/* <button className="p-2 mr-2 bg-purple-100 rounded-xl">
               <EyeIcon className="w-5 h-5 fill-purple-600" />
-            </button>
+            </button> */}
+            <h2>
+              {component.type === "Motor" && "Moteur"}
+              {component.type === "Spoiler" && "Aileron"}
+              {component.type === "Bodywork" && "Carroserie"}
+              {component.type === "Wheels" && "Roues"}
+              {component.type === "Brakes" && "Freins"}
+            </h2>
             <button
               className="p-2 bg-yellow-100 rounded-xl"
               onClick={() => openEditModal(component.type)}
@@ -243,7 +250,7 @@ const CarComponent = ({
                     <div className="grid grid-cols-2 mt-8">
                       {inventory.map((item) => {
                         console.log(item, activeType);
-                        if (item.item.type === activeType && item.isEquipped) {
+                        if (item.item.type === activeType && !item.isEquipped) {
                           return <ItemResume item={item.item} />;
                         }
                       })}
