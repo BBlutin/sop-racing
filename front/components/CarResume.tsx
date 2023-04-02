@@ -64,7 +64,6 @@ const CarResume = ({ car, inventory }: any) => {
     }
     setStats({ power, acceleration, grip, handling, weight, wear, energy });
     setLoading(false);
-    console.log(inventory);
   }, [car]);
 
   return (

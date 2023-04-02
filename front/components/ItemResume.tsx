@@ -1,8 +1,17 @@
+"use client";
+
 import { useEffect, useState } from "react";
 import Image from "next/image";
 import { BanknotesIcon, ShoppingCartIcon } from "@heroicons/react/24/solid";
+import { useRouter } from "next/navigation";
 
-const ItemResume = ({ item }: { item: Component }) => {
+const ItemResume = ({
+  item,
+  closeModal,
+}: {
+  item: Component;
+  closeModal: () => void;
+}) => {
   const [stats, setStats] = useState<Stats>({
     power: 0,
     acceleration: 0,
@@ -13,6 +22,8 @@ const ItemResume = ({ item }: { item: Component }) => {
     energy: 0,
   });
 
+  const router = useRouter();
+
   useEffect(() => {
     let power: number = 0,
       acceleration: number = 0,
@@ -21,6 +32,7 @@ const ItemResume = ({ item }: { item: Component }) => {
       weight: number = 0,
       wear: number = 0,
       energy: number = 0;
+    console.log(item);
     item?.statistiques.forEach((element) => {
       if (element.type === "Power") {
         power += element.value;
@@ -40,6 +52,22 @@ const ItemResume = ({ item }: { item: Component }) => {
     });
     setStats({ power, acceleration, grip, handling, weight, wear, energy });
   }, [item]);
+
+  async function onEquip(id: number) {
+    const res = await fetch(
+      "http://185.98.136.60:9090/teams/10/inventory/equip/" + id,
+      {
+        method: "put",
+        headers: new Headers({
+          Authorization: "Bearer " + process.env.NEXT_PUBLIC_TOKEN,
+          "Content-Type": "application/json",
+        }),
+      }
+    );
+    const result: any = await res.json();
+    router.refresh();
+    closeModal();
+  }
 
   return (
     <div className="flex flex-col w-full px-4 py-3 bg-white rounded-lg">
@@ -98,7 +126,10 @@ const ItemResume = ({ item }: { item: Component }) => {
           </div>
         </div>
       </div>
-      <button className="self-end px-4 py-2 font-medium text-purple-700 transition-all bg-purple-100 outline-none ring-0 hover:text-white hover:bg-purple-500 rounded-xl">
+      <button
+        onClick={() => onEquip(item.id)}
+        className="self-end px-4 py-2 font-medium text-purple-700 transition-all bg-purple-100 outline-none ring-0 hover:text-white hover:bg-purple-500 rounded-xl"
+      >
         Equiper
       </button>
     </div>

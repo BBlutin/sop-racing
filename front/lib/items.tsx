@@ -4,7 +4,7 @@ export async function getCar() {
       method: "get",
       cache: "no-store",
       headers: new Headers({
-        Authorization: "Bearer " + process.env.APP_TOKEN,
+        Authorization: "Bearer " + process.env.NEXT_PUBLIC_TOKEN,
         "Content-Type": "application/json",
       }),
     })
@@ -17,7 +17,7 @@ export async function getInventory() {
       method: "get",
       cache: "no-store",
       headers: new Headers({
-        Authorization: "Bearer " + process.env.APP_TOKEN,
+        Authorization: "Bearer " + process.env.NEXT_PUBLIC_TOKEN,
         "Content-Type": "application/json",
       }),
     })

@@ -247,11 +247,15 @@ const CarComponent = ({
                         </div>
                       </div>
                     </div>
-                    <div className="grid grid-cols-2 mt-8">
+                    <div className="grid grid-cols-2 gap-4 mt-8">
                       {inventory.map((item) => {
-                        console.log(item, activeType);
                         if (item.item.type === activeType && !item.isEquipped) {
-                          return <ItemResume item={item.item} />;
+                          return (
+                            <ItemResume
+                              item={item.item}
+                              closeModal={closeEditModal}
+                            />
+                          );
                         }
                       })}
                     </div>

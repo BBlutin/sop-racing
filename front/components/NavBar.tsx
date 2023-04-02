@@ -7,6 +7,7 @@ import {
   BuildingStorefrontIcon,
   ArchiveBoxIcon,
   RocketLaunchIcon,
+  GlobeEuropeAfricaIcon,
 } from "@heroicons/react/24/solid";
 import { usePathname } from "next/navigation";
 
@@ -72,22 +73,18 @@ const NavBar = () => {
           </li>
           <li className="w-full mt-2">
             <Link
-              href="/inventory"
-              className={pathname === "/inventory" ? `activeLink` : `baseLink`}
+              href="/race"
+              className={pathname === "/race" ? `activeLink` : `baseLink`}
             >
               <div
-                className={
-                  pathname === "/inventory" ? `activeTitle` : `baseTitle`
-                }
+                className={pathname === "/race" ? `activeTitle` : `baseTitle`}
               >
-                <ArchiveBoxIcon
-                  className={
-                    pathname === "/inventory" ? `activeIcon` : `baseIcon`
-                  }
+                <GlobeEuropeAfricaIcon
+                  className={pathname === "/race" ? `activeIcon` : `baseIcon`}
                 />
               </div>
               <span className="ml-1 duration-300 opacity-100 pointer-events-none ease-soft">
-                Inventaire
+                Circuits
               </span>
             </Link>
           </li>

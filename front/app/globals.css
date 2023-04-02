@@ -6,6 +6,9 @@
   body {
     @apply m-0 text-base antialiased font-normal bg-gray-50 text-slate-500;
   }
+  button {
+    @apply outline-none ring-0 focus:outline-none focus:ring-0;
+  }
 }
 
 @layer components {
@@ -32,5 +35,11 @@
   }
   .activeItem {
     @apply flex w-full px-4 py-2 mt-2 bg-white shadow-lg rounded-xl;
+  }
+  .activeRaceButton {
+    @apply px-4 py-2 mr-3 bg-white shadow-md text-slate-600 rounded-xl;
+  }
+  .raceButton {
+    @apply px-4 py-2 mr-3 transition-all bg-transparent rounded-xl hover:text-purple-500;
   }
 }
